@@ -3,7 +3,7 @@
     <!-- _ko template: { name: 'metadata_item_template',
                         data: $data.metadata
                       }  -->
-    <div>
+    <div data-bind="css: $data.outputClasses">
         <div data-bind="metadataFactory: metadata"></div>
     </div>
     <!-- /ko -->
