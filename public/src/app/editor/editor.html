@@ -1,0 +1,12 @@
+<div id="editor_template">
+    <!-- ko if: $data.output -->
+    <!-- _ko template: { name: 'metadata_item_template',
+                        data: $data.metadata
+                      }  -->
+    <div>
+        <div data-bind="metadataFactory: metadata"></div>
+    </div>
+    <!-- /ko -->
+
+    <div data-bind="{ attr: { id: $data.id }, editor: { storeValue: metadata, initialValue: metadata } }" style="height: 500px;"></div>
+</div>

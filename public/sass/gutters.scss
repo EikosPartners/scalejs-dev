@@ -1,0 +1,15 @@
+$mainColor: #20242a;
+$secondaryColor: #000;
+
+.gutter {
+    background-color: $mainColor;
+}
+
+.gutter-horizontal {
+    box-shadow: inset 1px 0 0 $secondaryColor, inset -1px 0 0 $secondaryColor;
+
+}
+
+.gutter-vertical {
+    box-shadow: inset 0 1px 0 0 $secondaryColor, inset 0 -1px 0 0 $secondaryColor;
+}
