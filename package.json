@@ -1,6 +1,6 @@
 {
   "name": "scalejs-dev",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Common scalejs dev components.",
   "main": "docs/build/app.bundle.js",
   "scripts": {
