@@ -1,4 +1,5 @@
 <div id="editor_template">
+    <section data-bind="{ attr: { id: $data.id }, editor: { storeValue: metadata, initialValue: metadata }, css: $data.classes }" style="height: 100%;"></section>
     <!-- ko if: $data.output -->
     <!-- _ko template: { name: 'metadata_item_template',
                         data: $data.metadata
@@ -7,6 +8,4 @@
         <div data-bind="metadataFactory: metadata"></div>
     </div>
     <!-- /ko -->
-
-    <section data-bind="{ attr: { id: $data.id }, editor: { storeValue: metadata, initialValue: metadata }, css: $data.classes }" style="height: 100%;"></section>
 </div>

@@ -70582,7 +70582,7 @@
 /* 244 */
 /***/ function(module, exports) {
 
-	module.exports = "<div id=\"editor_template\">\n    <!-- ko if: $data.output -->\n    <!-- _ko template: { name: 'metadata_item_template',\n                        data: $data.metadata\n                      }  -->\n    <div data-bind=\"css: $data.outputClasses\">\n        <div data-bind=\"metadataFactory: metadata\"></div>\n    </div>\n    <!-- /ko -->\n\n    <section data-bind=\"{ attr: { id: $data.id }, editor: { storeValue: metadata, initialValue: metadata }, css: $data.classes }\" style=\"height: 100%;\"></section>\n</div>";
+	module.exports = "<div id=\"editor_template\">\n    <section data-bind=\"{ attr: { id: $data.id }, editor: { storeValue: metadata, initialValue: metadata }, css: $data.classes }\" style=\"height: 100%;\"></section>\n    <!-- ko if: $data.output -->\n    <!-- _ko template: { name: 'metadata_item_template',\n                        data: $data.metadata\n                      }  -->\n    <div data-bind=\"css: $data.outputClasses\">\n        <div data-bind=\"metadataFactory: metadata\"></div>\n    </div>\n    <!-- /ko -->\n</div>";
 
 /***/ },
 /* 245 */
