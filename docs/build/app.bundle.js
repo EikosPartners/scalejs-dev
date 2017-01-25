@@ -62162,6 +62162,9 @@
 	    color: 4,
 	    text: 'BlueBerry'
 	}];
+
+	var formData = null;
+
 	function mockAjax(request, callback) {
 	    setTimeout(function () {
 	        switch (request.uri) {
@@ -62170,6 +62173,14 @@
 	                break;
 	            case 'things':
 	                callback(null, { Status: 'Success', data: things });
+	                break;
+	            case 'form':
+	                if (request.options.type === 'POST') {
+	                    formData = request.data;
+	                    callback(null, { Status: 'Success', data: formData });
+	                } else {
+	                    callback(null, { Status: 'Success', data: formData });
+	                }
 	                break;
 	            default:
 	                callback({ Status: 'Error', message: 'Error' });
