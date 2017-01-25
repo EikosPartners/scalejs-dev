@@ -7,6 +7,7 @@ import 'scalejs.metadatafactory-common/dist/action/actions/redirect';
 import 'scalejs.metadatafactory-common/dist/action/actions/route';
 import 'scalejs.metadatafactory-common/dist/action/actions/series';
 import 'scalejs.metadatafactory-common/dist/validations/validationsModule';
+import 'scalejs.metadatafactory-common/dist/setValue/setValueModule';
 
 // Load common styles
 import 'scalejs.metadatafactory-common/dist/action/actions/popup/popup.scss';
