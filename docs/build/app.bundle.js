@@ -62175,7 +62175,7 @@
 	                callback(null, { Status: 'Success', data: things });
 	                break;
 	            case 'form':
-	                if (request.options.type === 'POST') {
+	                if (request.options && request.options.type === 'POST') {
 	                    formData = request.data;
 	                    callback(null, { Status: 'Success', data: formData });
 	                } else {
