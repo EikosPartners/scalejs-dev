@@ -31,6 +31,7 @@
     "eslint-plugin-react": "^6.4.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "html-loader": "^0.4.4",
+    "lodash": "^4.17.4",
     "pjson-loader": "^2.0.0",
     "rimraf": "^2.5.4",
     "sass-loader": "^4.0.2",
