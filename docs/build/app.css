@@ -980,6 +980,74 @@ div.token-input-dropdown-pjson ul li.token-input-selected-dropdown-item-pjson {
     */ }
   .horizontal-grid-list .list-advanced {
     width: 100%; }
+.validation-message-box {
+  border: 2px solid #CE0000;
+  margin-bottom: 15px;
+  padding: 15px; }
+  .validation-message-box .fa-caret-down {
+    color: #CE0000;
+    padding-right: 10px; }
+  .validation-message-box .validation-message-header {
+    font-family: "Arial", sans-serif;
+    color: #CE0000; }
+    .validation-message-box .validation-message-header .validation-header-text {
+      font-family: "Arial", sans-serif;
+      font-size: 14px; }
+  .validation-message-box .validation-message {
+    font-size: 12px;
+    margin-top: 5px;
+    cursor: pointer; }
+    .validation-message-box .validation-message.error {
+      color: #CE0000; }
+    .validation-message-box .validation-message.warning {
+      color: #E87400; }
+    .validation-message-box .validation-message.validated {
+      color: green; }
+
+div.input-wrapper:hover + span.validation-message, .input-checkbox-wrapper:hover + span.validation-message {
+  display: inline-block; }
+
+span.validation-message.tooltip {
+  display: inline-block; }
+
+span.validation-message {
+  display: none;
+  float: left;
+  font-size: 12px;
+  color: white;
+  position: absolute;
+  height: auto;
+  width: 150px;
+  border-radius: 7px;
+  padding: 10px;
+  top: 60px;
+  z-index: 2;
+  margin-left: calc(100% - 210px); }
+  span.validation-message.tooltip {
+    background-color: #A3A309; }
+    span.validation-message.tooltip:before {
+      border-bottom: 10px solid #A3A309; }
+  span.validation-message.error {
+    background-color: #CE0000; }
+    span.validation-message.error:before {
+      border-bottom: 10px solid #CE0000; }
+  span.validation-message.warning {
+    background-color: #E87400; }
+    span.validation-message.warning:before {
+      border-bottom: 10px solid #E87400; }
+  span.validation-message.validated {
+    background-color: green; }
+    span.validation-message.validated:before {
+      border-bottom: 10px solid green; }
+  span.validation-message:before {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    left: 75px;
+    top: -10px; }
 .popup-box header {
   padding: 10px; }
 
