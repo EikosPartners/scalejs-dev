@@ -70991,11 +70991,17 @@
 
 	        // if we have an initial value set it in editor and then update the storevalue
 	        if (editorValue) {
-	            // if it is already a string do not stringify
-	            if (typeof editorValue !== 'string') {
-	                editorValue = JSON.stringify(editorValue, null, 4);
+	            if (Array.isArray(editorValue) && mode === 'javascript') {
+	                // Insert the js as an array.
+	                editor.setValue(editorValue.join('\n'));
+	                editor.clearSelection();
+	            } else {
+	                // if it is already a string do not stringify
+	                if (typeof editorValue !== 'string') {
+	                    editorValue = JSON.stringify(editorValue, null, 4);
+	                }
+	                editor.insert(editorValue);
 	            }
-	            editor.insert(editorValue);
 	        }
 
 	        if (storeValue && mode === 'json') {
