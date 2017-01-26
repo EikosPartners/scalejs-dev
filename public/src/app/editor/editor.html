@@ -1,6 +1,6 @@
 <div id="editor_template">
-    <section data-bind="{ attr: { id: $data.id }, editor: { value: metadata }, css: $data.classes }" style="height: 100%;"></section>
-    <!-- ko if: $data.output -->
+    <section data-bind="{ attr: { id: $data.id }, editor: { value: metadata, mode: $data.mode, output: $data.output }, css: $data.classes }" style="height: 100%;"></section>
+    <!-- ko if: $data.output && (!$data.mode || $data.mode === 'json')-->
     <!-- _ko template: { name: 'metadata_item_template',
                         data: $data.metadata
                       }  -->

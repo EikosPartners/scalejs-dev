@@ -2,6 +2,7 @@ import ko from 'knockout';
 import ace from 'brace';
 import 'brace/mode/json';
 import 'brace/mode/css';
+import 'brace/mode/javascript';
 import 'brace/theme/monokai';
 
 /**
@@ -17,13 +18,19 @@ ko.bindingHandlers.editor = {
         const id = element.id;
         const editor = ace.edit(id);
         const storeValue = options.value;
+        const mode = options.mode || 'json';
         let editorValue = options.value && ko.unwrap(options.value);
+
+        if (mode !== 'json' && options.output) {
+            console.warn("Output will only be displayed if the mode is set to json");
+            options.output = false;
+        }
 
         if (!ko.isObservable(storeValue)) { // storevalue must be an observable if not error
             console.error('You provided a storeValue property but it is not an observable');
         }
 
-        editor.getSession().setMode('ace/mode/' + (options.mode || 'json'));
+        editor.getSession().setMode('ace/mode/' + mode);
         editor.setTheme('ace/theme/monokai');
 
         // if we have an initial value set it in editor and then update the storevalue
@@ -33,7 +40,7 @@ ko.bindingHandlers.editor = {
             editor.insert(editorValue);
         }
 
-        if (storeValue) {
+        if (storeValue && mode === 'json') {
             editor.getSession().on('change', () => {
                 try {
                     const json = JSON.parse(editor.getValue());
