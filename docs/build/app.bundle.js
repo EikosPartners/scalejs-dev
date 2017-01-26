@@ -58436,8 +58436,8 @@
 	        var params = valueAccessor(),
 	            bindings = allBindings(),
 	            $selectedElement = (0, _jquery2.default)(element),
-	            value = bindings.tokeninputValue || _knockout2.default.observable(),
-	            tokeninputUpdating = false,
+	            value = bindings.tokeninputValue || _knockout2.default.observable();
+	        var tokeninputUpdating = false,
 	            reinit = false;
 
 	        function getOptions() {
@@ -58462,21 +58462,21 @@
 	        }
 
 	        function onResult(results) {
-	            //console.log('Results -->', results);
+	            // console.log('Results -->', results);
 	            return results.filter(function (result) {
 	                return !value().includes(result.id);
 	            });
 	        }
 
 	        function onAdd(added) {
-	            //console.log('Add -->', added);
+	            // console.log('Add -->', added);
 	            tokeninputUpdating = true;
 	            value.push(added.id);
 	            tokeninputUpdating = false;
 	        }
 
 	        function onDelete(deleted) {
-	            //console.log('Delete -->', deleted);
+	            // console.log('Delete -->', deleted);
 	            if (reinit) {
 	                return;
 	            }
@@ -58503,10 +58503,14 @@
 	        // if (options.placeholder) {
 	        //     $selectedElement.parent().find('input').attr('placeholder', options.placeholder);
 	        // }
+
+	        _knockout2.default.utils.domNodeDisposal.addDisposeCallback(element, function () {
+	            $selectedElement.tokenInput('destroy');
+	        });
 	    },
-	    update: function update(element, valueAccessor, allBindings) {
+	    update: function update(element, valueAccessor) {
 	        var params = valueAccessor();
-	        //console.log('new params-->', params);
+	        // console.log('new params-->', params);
 	        (0, _jquery2.default)(element).data('settings').local_data = params;
 	    }
 	};
@@ -58708,11 +58712,12 @@
 	        destroy: function () {
 	            if (this.data("tokenInputObject")) {
 	                this.data("tokenInputObject").clear();
+	                this.data("tokenInputObject").destroy();
 	                var tmpInput = this;
-	                var closest = this.parent();
-	                closest.empty();
-	                tmpInput.show();
-	                closest.append(tmpInput);
+	                // var closest = this.parent();
+	                // closest.empty();
+	                // tmpInput.show();
+	                // closest.append(tmpInput);
 	                return tmpInput;
 	            }
 	        }
@@ -59071,6 +59076,15 @@
 
 	        this.toggleDisabled = function(disable) {
 	            toggleDisabled(disable);
+	        };
+
+	        this.destroy = function () {
+	            input_box.remove();
+	            token_list.remove();
+	            dropdown.remove();
+	            input_resizer.remove();
+	            hiddenInput.unbind('focus').unbind('blur').show();
+
 	        };
 
 	        // Resize input to maximum width so the placeholder can be seen
@@ -70901,7 +70915,7 @@
 	var _scalejs = __webpack_require__(138);
 
 	function editorViewModel(node) {
-	    var metadata = (0, _knockout.observable)(node.initialValue || {});
+	    var metadata = (0, _knockout.observable)(node.value || {});
 
 	    return (0, _scalejs.merge)(node, {
 	        metadata: metadata
@@ -70912,7 +70926,7 @@
 /* 252 */
 /***/ function(module, exports) {
 
-	module.exports = "<div id=\"editor_template\">\n    <section data-bind=\"{ attr: { id: $data.id }, editor: { storeValue: metadata, initialValue: metadata }, css: $data.classes }\" style=\"height: 100%;\"></section>\n    <!-- ko if: $data.output -->\n    <!-- _ko template: { name: 'metadata_item_template',\n                        data: $data.metadata\n                      }  -->\n    <div data-bind=\"css: $data.outputClasses\">\n        <div data-bind=\"metadataFactory: metadata\"></div>\n    </div>\n    <!-- /ko -->\n</div>";
+	module.exports = "<div id=\"editor_template\">\n    <section data-bind=\"{ attr: { id: $data.id }, editor: { value: metadata }, css: $data.classes }\" style=\"height: 100%;\"></section>\n    <!-- ko if: $data.output -->\n    <!-- _ko template: { name: 'metadata_item_template',\n                        data: $data.metadata\n                      }  -->\n    <div data-bind=\"css: $data.outputClasses\">\n        <div data-bind=\"metadataFactory: metadata\"></div>\n    </div>\n    <!-- /ko -->\n</div>\n";
 
 /***/ },
 /* 253 */
@@ -70956,8 +70970,8 @@
 	        var options = valueAccessor();
 	        var id = element.id;
 	        var editor = _brace2.default.edit(id);
-	        var storeValue = options.storeValue;
-	        var initialValue = options.initialValue && _knockout2.default.unwrap(options.initialValue);
+	        var storeValue = options.value;
+	        var editorValue = options.value && _knockout2.default.unwrap(options.value);
 
 	        if (!_knockout2.default.isObservable(storeValue)) {
 	            // storevalue must be an observable if not error
@@ -70968,12 +70982,12 @@
 	        editor.setTheme('ace/theme/monokai');
 
 	        // if we have an initial value set it in editor and then update the storevalue
-	        if (initialValue) {
+	        if (editorValue) {
 	            // if it is already a string do not stringify
-	            if (typeof initialValue !== 'string') {
-	                initialValue = JSON.stringify(initialValue, null, 4);
+	            if (typeof editorValue !== 'string') {
+	                editorValue = JSON.stringify(editorValue, null, 4);
 	            }
-	            editor.insert(initialValue);
+	            editor.insert(editorValue);
 	        }
 
 	        if (storeValue) {

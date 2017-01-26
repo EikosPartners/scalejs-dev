@@ -16,8 +16,8 @@ ko.bindingHandlers.editor = {
         const options = valueAccessor();
         const id = element.id;
         const editor = ace.edit(id);
-        const storeValue = options.storeValue;
-        let initialValue = options.initialValue && ko.unwrap(options.initialValue);
+        const storeValue = options.value;
+        let editorValue = options.value && ko.unwrap(options.value);
 
         if (!ko.isObservable(storeValue)) { // storevalue must be an observable if not error
             console.error('You provided a storeValue property but it is not an observable');
@@ -27,10 +27,10 @@ ko.bindingHandlers.editor = {
         editor.setTheme('ace/theme/monokai');
 
         // if we have an initial value set it in editor and then update the storevalue
-        if (initialValue) {
+        if (editorValue) {
             // if it is already a string do not stringify
-            if (typeof initialValue !== 'string') { initialValue = JSON.stringify(initialValue, null, 4); }
-            editor.insert(initialValue);
+            if (typeof editorValue !== 'string') { editorValue = JSON.stringify(editorValue, null, 4); }
+            editor.insert(editorValue);
         }
 
         if (storeValue) {

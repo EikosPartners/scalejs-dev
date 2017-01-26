@@ -6,6 +6,23 @@
         <!--<link href="/build/main.css" rel="stylesheet" type="text/css" />-->
     </head>
     <body>
+        <script>
+            var editorJSON = {
+                "type": "editor",
+                "id": "editorJSON",
+                "value": {
+                    "type": "template",
+                    "template": "text",
+                    "text": "Hello World!"
+                },
+                "output": true
+            };
+        </script>
+
+        <div style="height: 500px" data-bind="metadataFactory: editorJSON">
+
+        </div>
+
         <script src="/build/app.bundle.js"></script>
     </body>
 </html>
