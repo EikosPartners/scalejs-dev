@@ -1,3 +1,76 @@
 <html>
 Scalejs dev!
+
+<style>
+    .editor {
+        width: calc(50% - 5px);
+        border-radius: 4px;
+        flex-grow: 1;
+    }
+
+    .output {
+        width: calc(50% - 5px);
+        padding-left: 10px;
+        border: 1px solid black;
+        border-radius: 4px;
+        height: 100%;
+        background-color: #F2F2F2;
+        flex-grow: 1;
+    }
+</style>
+
+<link href="./build/app.css" rel="stylesheet" type="text/css" />
+
+<script>
+    var editorJSON = {
+        "type": "editor",
+        "id": "editorJSON",
+        "value": {
+            "type": "input",
+            "id": "name",
+            "inputType": "text",
+            "label": "What's your name?"
+        },
+        "output": true,
+        "classes": "editor",
+        "outputClasses": "output"
+    };
+
+    var editorJSON2 = {
+        "type": "editor",
+        "id": "editorJSON2",
+        "value": {
+            "type": "input",
+            "id": "name",
+            "inputType": "text",
+            "label": "What's your name?"
+        },
+        "output": true,
+        "classes": "editor",
+        "outputClasses": "output"
+    };
+
+    var editorJSON3 = {
+        "type": "editor",
+        "id": "editorJSON3",
+        "value": {
+            "type": "input",
+            "id": "name",
+            "inputType": "text",
+            "label": "What's your name?"
+        },
+        "output": true,
+        "classes": "editor",
+        "outputClasses": "output"
+    };
+</script>
+
+<div data-bind="metadataFactory: editorJSON">
+
+</div>
+
+<div data-bind="metadataFactory: editorJSON2"></div>
+<div data-bind="metadataFactory: editorJSON3"></div>
+
+<script src="./build/app.bundle.js"></script>
 </html>

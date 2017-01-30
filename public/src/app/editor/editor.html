@@ -1,11 +1,21 @@
 <div id="editor_template">
-    <section data-bind="{ attr: { id: $data.id }, editor: { value: metadata, mode: $data.mode, output: $data.output }, css: $data.classes }" style="height: 100%;"></section>
-    <!-- ko if: $data.output && (!$data.mode || $data.mode === 'json')-->
-    <!-- _ko template: { name: 'metadata_item_template',
-                        data: $data.metadata
-                      }  -->
-    <div data-bind="css: $data.outputClasses">
-        <div data-bind="metadataFactory: metadata"></div>
-    </div>
+    <!-- ko if: $data.output -->
+    <header class="split-container">
+        <button class="btn btn-default" data-class="split-action editor">Editor</button>
+        <button class="btn btn-default" data-class="split-action output">Output</button>
+        <button class="btn btn-default" data-class="split-action split">Split</button>
+    </header>
     <!-- /ko -->
+
+    <div class="editor-output-container">
+        <section data-bind="{ attr: { id: $data.id }, editor: { value: metadata, mode: $data.mode, output: $data.output, shown: true }, css: $data.classes, visible: $data.editorVisible}" style="height: 100%;"></section>
+        <!-- ko if: $data.output && (!$data.mode || $data.mode === 'json')-->
+        <!-- _ko template: { name: 'metadata_item_template',
+                            data: $data.metadata
+                          }  -->
+        <div data-bind="{attr: { id: $data.id + '-output' }, css: $data.outputClasses, visible: $data.outputVisible }">
+            <div data-bind="metadataFactory: metadata"></div>
+        </div>
+        <!-- /ko -->
+    </div>
 </div>
