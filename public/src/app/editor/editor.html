@@ -7,15 +7,17 @@
     </header>
     <!-- /ko -->
 
-    <div class="editor-output-container">
-        <section data-bind="{ attr: { id: $data.id }, editor: { value: metadata, mode: $data.mode, output: $data.output, shown: true }, css: $data.classes, visible: $data.editorVisible}" style="height: 100%;"></section>
-        <!-- ko if: $data.output && (!$data.mode || $data.mode === 'json')-->
-        <!-- _ko template: { name: 'metadata_item_template',
-                            data: $data.metadata
-                          }  -->
-        <div data-bind="{attr: { id: $data.id + '-output' }, css: $data.outputClasses, visible: $data.outputVisible }">
-            <div data-bind="metadataFactory: metadata"></div>
+    <div style="display: block;">
+        <div class="editor-output-container">
+            <section data-bind="{ attr: { id: $data.id }, editor: { value: metadata, mode: $data.mode, output: $data.output, shown: true }, css: $data.classes, visible: $data.editorVisible}" style="height: 100%;"></section>
+            <!-- ko if: $data.output && (!$data.mode || $data.mode === 'json')-->
+            <!-- _ko template: { name: 'metadata_item_template',
+                                data: $data.metadata
+                              }  -->
+            <div data-bind="{attr: { id: $data.id + '-output' }, css: $data.outputClasses, visible: $data.outputVisible }">
+                <div data-bind="metadataFactory: metadata"></div>
+            </div>
+            <!-- /ko -->
         </div>
-        <!-- /ko -->
     </div>
 </div>
