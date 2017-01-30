@@ -1074,7 +1074,7 @@ span.validation-message {
   box-shadow: none; }
 .editor-output-container {
   width: 100%;
-  height: calc(100% - 26px);
+  height: calc(100% - 45px);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
