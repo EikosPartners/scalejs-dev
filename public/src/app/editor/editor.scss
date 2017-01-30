@@ -51,6 +51,6 @@
 
 @media only screen and (max-width: 768px) {
     [data-class="split-action split"] {
-        display: none;
+        display: none !important;
     }
 }
