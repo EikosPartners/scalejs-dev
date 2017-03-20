@@ -4,6 +4,25 @@
         <meta charset="UTF-8" />
         <title>ScaleJS Editor</title>
         <!--<link href="/build/main.css" rel="stylesheet" type="text/css" />-->
+        <style>
+            .output {
+                width: calc(50% - 5px);
+                padding-left: 10px;
+                border: 1px solid black;
+                border-radius: 4px;
+                height: 100%;
+                background-color: #F2F2F2;
+                flex-grow: 1;
+            }
+            .editor {
+                width: calc(50% - 5px);
+                border: 1px solid black;
+                border-radius: 4px;
+                flex-grow: 1;
+                margin-right: 15px;
+            }
+
+        </style>
     </head>
     <body>
         <script>
@@ -15,7 +34,9 @@
                     "template": "text",
                     "text": "Hello World!"
                 },
-                "output": true
+                "output": true,
+                "classes": "editor",
+                "outputClasses": "output"
             };
         </script>
 
