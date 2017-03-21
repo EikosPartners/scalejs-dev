@@ -21,6 +21,4 @@ webpackConfig.plugins = [
     new ExtractTextPlugin('[name].css')
 ];
 
-delete webpackConfig.devtool;
-
 module.exports = webpackConfig;
